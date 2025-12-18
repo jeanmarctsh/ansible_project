@@ -1,4 +1,4 @@
-# 🚀 Déploiement d'Ansible
+# 🚀 APERÇU D'Ansible
 
 __Pour voir la configuration complète, veuillez selectionner la branche Patchlab__
 
@@ -6,12 +6,12 @@ __Pour voir la configuration complète, veuillez selectionner la branche Patchla
 
 ## 📑 SOMMAIRES
 
-- [📌 INTRODUCTION](#-introduction)
+- [📌 DESCRIPTION](#-description)
 - [📫 CONTACT](#-contact)
   
 ---
 
-## 📌 INTRODUCTION
+## 📌 DESCRIPTION
 
 Dans le monde informatique actuel, nous voyons bel et bien comment l'automatisation devient presque indispensable en entreprise. Cela permet non seulement de gagner en temps mais cela évite aussi les erreurs humaines. 
 Dans le cadre de notre projet nous allons utiliser l’outil ansible. Ce dernier permettra d’installer, de désinstaller les packages, de créer les utilisateurs, etc… 
