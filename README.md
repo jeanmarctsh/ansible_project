@@ -7,7 +7,7 @@ __Pour voir la configuration complète, veuillez selectionner la branche Patchla
 ## 📑 SOMMAIRES
 
 - [📌 INTRODUCTION](#-introduction)
-- [📫 contact](#-contact)
+- [📫 CONTACT](#-contact)
   
 ---
 
@@ -19,7 +19,7 @@ Automatiser ne suffit pas, il faut savoir quoi automatiser.
 
 ---
 
-## 📫 Contact
+## 📫 CONTACT
 
 [![Email](https://img.shields.io/badge/Email-red?style=for-the-badge&logo=gmail)](mailto:jeanmarctshimbombo@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/jean-marc-ngandu-b60796222)
