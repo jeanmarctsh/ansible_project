@@ -1,5 +1,5 @@
 
-# 🚧 Projet en cours de développement
+# 🚧 Projet en cours de développement.
 
 # 🚀 APERÇU D'ANSIBLE
 
