@@ -1,24 +1,23 @@
 
 # 🚧 Projet en cours de développement.
 
-# 🚀 APERÇU D'ANSIBLE
+# 🚀 AUTOMATISATION AVEC ANSIBLE
+
+## Prise en main et utilisation d'ansible 
 
 __Pour voir la configuration complète, veuillez selectionner la branche Patchlab__
 
 ---
 
-## 📑 SOMMAIRES
+## 🔧 BUT
 
-- [📌 DESCRIPTION](#-description)
-- [📫 CONTACT](#-contact)
-  
----
+Installer et maîtriser Ansible pour simplifier les opérations IT et réduire les interventions manuelles.
 
-## 📌 DESCRIPTION
+## 🎯 OBJECTIFS
 
-Dans le monde informatique actuel, nous voyons bel et bien comment l'automatisation devient presque indispensable en entreprise. Cela permet non seulement de gagner en temps mais cela évite aussi les erreurs humaines. 
-Dans le cadre de notre projet nous allons utiliser l’outil ansible. Ce dernier permettra d’installer, de désinstaller les packages, de créer les utilisateurs, etc… 
-Automatiser ne suffit pas, il faut savoir quoi automatiser.   
+Gérer plusieurs machines clientes simultanément pour automatiser le déploiement de services et logiciels, ainsi que leurs configurations et mises à jour, de manière cohérente et efficace.
+
+   
 
 ---
 
