@@ -1,0 +1,15 @@
+## list of task who will be installed on abstact machine## list of task who will be installed on marco1 machine
+---
+packages:
+
+  - apache2
+  - git
+  - htop
+  - rsync
+
+## list of packages to remove
+
+remove_packages:
+
+  - htop
+  - rsync
