@@ -1,0 +1,19 @@
+---
+- name: manage package on linux machine
+  hosts: all 
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: apt cache 
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+      tags: always
+
+    - name: install package on linux customer machine from local repository
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"
+      tags: install
