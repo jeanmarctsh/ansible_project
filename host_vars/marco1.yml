@@ -1,0 +1,16 @@
+## list of task who will be installed on marco1 machine
+---
+packages:
+  - nginx
+  - git
+  - htop
+  - time
+
+
+
+## list of packages to remove
+
+remove_packages:
+
+  - time
+  - htop
