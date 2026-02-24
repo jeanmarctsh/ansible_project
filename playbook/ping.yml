@@ -1,0 +1,12 @@
+---
+- name: connectivity
+  hosts: all
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: tester le connectivité des machines clientes
+      ping:
+
+    - debug:
+        msg: "test de connectivé sur {{inventory_hostname}} avec comme adresse ip {{ansible_host}}"
