@@ -1,0 +1,22 @@
+---
+- name: Install common packages on both server
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: apt cache 
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+      tags: always
+
+    - name: Install common packages on workers host
+      apt:
+        name: "{{ common_packages }}"
+        state: present
+      tags: install_B
+
+    - debug:
+        msg: " packages installed on: {{ inventory_hostname }} "
+
