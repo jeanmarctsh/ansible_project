@@ -1,0 +1,7 @@
+---
+
+worker_packages:
+
+  - nginx
+  - htop
+  
