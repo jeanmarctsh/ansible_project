@@ -1,0 +1,25 @@
+---
+- name: "Initialisation : Création de l'utilisateur rua"
+  hosts: all
+  become: true
+
+  tasks:
+    - name: "création de l'utilisateur rua"
+      user:
+        name: rua
+        shell: /bin/bash
+        create_home: yes
+
+    
+    - name: "Ajouter la clé SSH du Master pour l'utilisateur rua"
+      authorized_key:
+        user: rua
+        state: present
+        key: "{{ lookup('file', '~/.ssh/ansible_key.pub') }}" 
+
+    - name: "autorisation du sudo sans mot de passe"
+      copy:
+        content: "rua ALL=(ALL) NOPASSWD:ALL"
+        dest: /etc/sudoers.d/rua
+        mode: '0440'
+        validate: '/usr/sbin/visudo -cf %s'
