@@ -1,0 +1,23 @@
+---
+- name: Install package on linux servers (worker1 and worker2)
+  hosts: workers
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: apt cache 
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+      tags: always
+
+    - name: install package
+      apt:
+        name: "{{ worker_packages }}"
+        state: present
+      tags: install_A
+    
+    - debug:
+        msg: " packages installés sur {{ ansible_host }} "
+
+      
