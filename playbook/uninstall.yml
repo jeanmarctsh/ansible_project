@@ -1,0 +1,20 @@
+---
+- name: manage package on linux machine
+  hosts: all 
+  become: true
+  gather_facts: true
+ 
+  tasks:
+    - name: apt cache
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: remove package on linux customer machine
+      apt:
+        name: "{{ remove_packages }}"
+        state: absent
+      tags: remove
+
+    - debug:
+        msg: "packages has been removed on {{ inventory_hostname }}"
