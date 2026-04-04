@@ -4,7 +4,7 @@
   become: true
 
   tasks:
-    - name: "création de l'utilisateur rua"
+    - name: "création de l'utilisateur rua."
       user:
         name: rua
         shell: /bin/bash
