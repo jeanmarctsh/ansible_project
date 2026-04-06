@@ -40,8 +40,9 @@ Pour l'exécution d'un Playbook, veuillez lancer la commande suivante:
 ```bash
 ansible-playbook -i inventory/inventory.yml playbook/install.yml
 
----
+```
 
+---
 
 ## 📫 CONTACT
 
