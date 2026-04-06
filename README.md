@@ -39,3 +39,12 @@ Pour l'exécution d'un Playbook, veuillez lancer la commande suivante:
 
 ```bash
 ansible-playbook -i inventory/inventory.yml playbook/install.yml
+
+---
+
+
+## 📫 CONTACT
+
+[![Email](https://img.shields.io/badge/Email-red?style=for-the-badge&logo=gmail)](mailto:jeanmarctshimbombo@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/jean-marc-ngandu-b60796222)
+[![GitHub](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github)](https://github.com/jeanmarctsh)
