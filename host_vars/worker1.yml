@@ -1,7 +1,0 @@
----
-
-worker_packages:
-
-  - apache2
-  - curl
-  - rsync
