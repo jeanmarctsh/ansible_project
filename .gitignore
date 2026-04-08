@@ -1,0 +1,12 @@
+# Ignorer les clés privées et publiques
+*.key
+*.pub
+ansible_key*
+
+# Ignorer les fichiers de configuration SSH locaux
+ssh_config
+known_hosts
+
+# Ignorer tout dossier .ssh qui serait créé par erreur dans le projet
+.ssh/
+
