@@ -1,7 +1,5 @@
 # 🚀 Ansible Automation 
 
-> 🚧 Projet en cours de finition.....
-
 ---
 
 ## 🎯 Objectif
@@ -35,10 +33,29 @@ la structure générale du projet se présente de la manière suivante:
 ---
 ## ▶️ Exécution du Playbook
 
-Pour l'exécution d'un Playbook, veuillez lancer la commande suivante:
+Pour l'exécution d'un Playbook, veuillez lancer les commandes suivantes:
+
+> 1. Test ping sur les deux serveurs (worker1 et worker2)
 
 ```bash
-ansible-playbook -i inventory/inventory.yml playbook/install.yml
+ansible all -i inventory/inventory.yml -m ping
+
+```
+---
+
+> 2. Installation de difféents paquets au niveau du worker1 avec le tag : install_A
+
+```bash
+ansible-playbook -i inventory/inventory.yml playbook/install.yml --tags="install_A"
+
+```
+
+---
+
+> 3. Installation de difféents paquets au niveau du worker2 avec le tag : install_B
+
+```bash
+ansible-playbook -i inventory/inventory.yml playbook/common.yml --tags="install_B"
 
 ```
 
