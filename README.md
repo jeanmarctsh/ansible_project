@@ -35,7 +35,7 @@ la structure générale du projet se présente de la manière suivante:
 
 Pour l'exécution d'un Playbook, voici quelques commandes à lancer:
 
-> 1. Test ping sur les deux serveurs (worker1 et worker2)
+> 1. Test de connectivité sur les deux serveurs (worker1 et worker2)
 
 ```bash
 ansible all -i inventory/inventory.yml -m ping
