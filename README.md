@@ -8,7 +8,7 @@ Ce projet vise à automatiser la gestion d'une infrastructure Linux avec Ansible
 
     - Création d'un utilisateur ansible (rua) dédié pour une gestion centralisée et sécurisée,
     - Organiser la configuration avec group_vars et host_vars pour une meilleure scalabilité
-    - Installation et gestion de paquets via le module apt,
+    - Installation et gestion de différents paquets via le module apt,
     - Simplifier la configuration des serveurs et réduire les interventions manuelles
     - etc...
 
@@ -33,7 +33,7 @@ la structure générale du projet se présente de la manière suivante:
 ---
 ## ▶️ Exécution du Playbook
 
-Pour l'exécution d'un Playbook, veuillez lancer les commandes suivantes:
+Pour l'exécution d'un Playbook, voici quelques commandes à lancer:
 
 > 1. Test ping sur les deux serveurs (worker1 et worker2)
 
