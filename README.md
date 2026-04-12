@@ -31,7 +31,7 @@ la structure générale du projet se présente de la manière suivante:
     - YAML
 
 ---
-## ▶️ Exécution du Playbook
+## ▶️ Exécution du Playbook.
 
 Pour l'exécution d'un Playbook, voici quelques commandes à lancer:
 
