@@ -18,7 +18,7 @@ Ce projet vise à automatiser la gestion d'une infrastructure Linux avec Ansible
 
 la structure générale du projet se présente de la manière suivante:
 
-![Structure du projet](Images/Structure_projet_2.PNG)
+![Structure du projet](Images/structure_globale.PNG)
 
 ---
 
