@@ -10,13 +10,9 @@
         update_cache: yes
       when: ansible_os_family == "Debian"
 
-    - name: Ensure that remove_packages is available
-      ansible.builtin.debug:
-        var: remove_packages | default([])
-
     - name: remove package on linux customer machine
       apt:
-        name: "{{ remove_packages | default([]) }}"
+        name: "{{ remove_packages }}"
         state: absent
       tags: remove
 
