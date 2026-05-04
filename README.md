@@ -18,7 +18,33 @@ Ce projet vise à automatiser la gestion d'une infrastructure Linux avec Ansible
 
 la structure générale du projet se présente de la manière suivante:
 
-![Structure du projet](Images/structure_globale.PNG)
+```text
+ansible-automation/
+├── Images                  # Captures d'écran et schémas du projet
+├── inventory/              
+│   ├── group_vars
+│   │   ├── all.yml         # Variables communes à tous les serveurs
+│   │   └── workers.yml     # Variables spécifiques au groupe "workers"
+│   ├── host_vars           
+│   │   ├── worker1.yml     # Configuration propre au serveur worker1
+│   │   └── worker2.yml     # Configuration propre au serveur worker2
+│   └── hosts.yml           # Fichier d'inventaire pour les différents hôtes et groupes
+├── playbook/               
+│   ├── cleanup.yml         # Nettoyage des fichiers temporaires
+│   ├── common.yml          # Configuration de base pour les groupes communs 
+│   ├── create_user.yml     # Création automatique et gestion des utilisateurs SSH
+│   ├── install.yml         # Playbook principal d'installation
+│   ├── ping.yml            # Test de connectivité simple
+│   └── uninstall.yml       # Désinstallation de différents paquets
+├── .gitignore              # Fichiers à exclure de Git (logs, secrets)
+├── ansible.cfg             # Configuration personnalisée d'Ansible
+└── README.md               # Documentation du projet
+
+```
+
+
+
+
 
 ---
 
@@ -38,7 +64,7 @@ Pour l'exécution d'un Playbook, voici quelques commandes à lancer:
 > 1. Test ping sur les deux serveurs (worker1 et worker2)
 
 ```bash
-ansible all -i inventory/inventory.yml -m ping
+ansible all -i inventory/hosts.yml -m ping
 
 ```
 ---
@@ -46,7 +72,7 @@ ansible all -i inventory/inventory.yml -m ping
 > 2. Installation de difféents paquets au niveau du worker1 avec le tag : install_A
 
 ```bash
-ansible-playbook -i inventory/inventory.yml playbook/install.yml --tags="install_A"
+ansible-playbook -i inventory/hosts.yml playbook/install.yml --tags="install_A"
 
 ```
 
@@ -55,7 +81,7 @@ ansible-playbook -i inventory/inventory.yml playbook/install.yml --tags="install
 > 3. Installation de difféents paquets au niveau du worker2 avec le tag : install_B
 
 ```bash
-ansible-playbook -i inventory/inventory.yml playbook/common.yml --tags="install_B"
+ansible-playbook -i inventory/hosts.yml playbook/common.yml --tags="install_B"
 
 ```
 
