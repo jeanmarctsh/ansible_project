@@ -61,7 +61,7 @@ ansible-automation/
 
 Pour l'exécution d'un Playbook, voici quelques commandes à lancer:
 
-> 1. Test ping sur les deux serveurs (worker1 et worker2)
+> 1. Test de connectivité sur les deux serveurs (worker1 et worker2)
 
 ```bash
 ansible all -i inventory/hosts.yml -m ping
