@@ -1,0 +1,40 @@
+---
+- name: Setting up servers 
+  hosts: localhost
+  connection: local
+  become: true
+  gather_facts: true 
+
+
+  tasks:
+  
+    - name: apt refresh
+
+      ansible.builtin.apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+      tags: always
+
+    
+    - name: install node-exporter package on local host
+
+      ansible.builtin.apt:
+        name: "{{ common_packages  }}"
+        state: present
+      tags: install
+    
+    - name: Verify that node is working well
+      ansible.builtin.uri:
+        url: http://localhost:9100/metrics
+        method: GET
+        status_code: 200
+    
+    - name: Check prometheus-node-exporter state
+      ansible.builtin.systemd_service:
+        name: prometheus-node-exporter
+      register: node_exporter_status
+
+    - ansible.builtin.debug:
+        msg: " packages installed on: {{ inventory_hostname }} "
+    - ansible.builtin.debug:
+        msg: "service is: {{ node_exporter_status.status.ActiveState }} "
