@@ -6,3 +6,4 @@ common_packages:
 
   - git
   - time
+  - prometheus-node-exporter
