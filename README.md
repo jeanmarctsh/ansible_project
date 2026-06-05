@@ -92,10 +92,10 @@ ansible-playbook -i inventory/hosts.yml playbook/common.yml --tags="install_B"
 
     Suite à la restructuration du repertoire inventory et du fichier ansible.cfg, l'exécution de la nouvelle commande sera:
 
-    ```bash
-    ansible-playbook playbook/node_exporter_install.yml
+```bash
+ansible-playbook playbook/node_exporter_install.yml
 
-    ```
+```
 	
 
 ---
