@@ -60,7 +60,7 @@ ansible-automation/
     - YAML
 
 ---
-## ▶️ Exécution du Playbook.
+## ▶️ Exécution du Playbook (ancienne configuration).
 
 Pour l'exécution d'un Playbook, voici quelques commandes à lancer:
 
@@ -87,6 +87,16 @@ ansible-playbook -i inventory/hosts.yml playbook/install.yml --tags="install_A"
 ansible-playbook -i inventory/hosts.yml playbook/common.yml --tags="install_B"
 
 ```
+
+> Exécution du Playbook ( Nouvelle configuration)
+
+    Suite à la restructuration du repertoire inventory et du fichier ansible.cfg, l'exécution de la nouvelle commande sera:
+
+    ```bash
+    ansible-playbook playbook/node_exporter_install.yml
+
+    ```
+	
 
 ---
 
