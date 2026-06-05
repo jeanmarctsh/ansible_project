@@ -1,4 +1,6 @@
 # 🚀 Ansible Automation 
+# Projet en cours de restructuration pour une approche plus manageable
+> En raison de cette restructuration, **les anciennes commandes ciblant un fichier d'inventaire direct ne doivent plus être utilisées**
 
 ---
 
