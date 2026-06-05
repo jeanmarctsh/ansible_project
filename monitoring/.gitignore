@@ -4,4 +4,4 @@ monitoring/.env*
 
 ## No skipped file(s)
 
-monitoring/!.env.example
+!monitoring/.env.example
