@@ -20,25 +20,26 @@ la structure générale du projet se présente de la manière suivante:
 
 ```text
 ansible-automation/
-├── Images                  # Captures d'écran et schémas du projet
+├── Images                          # Captures d'écran et schémas du projet
 ├── inventory/              
 │   ├── group_vars
-│   │   ├── all.yml         # Variables communes à tous les serveurs
-│   │   └── workers.yml     # Variables spécifiques au groupe "workers"
+│   │   ├── all.yml                 # Variables communes à tous les serveurs
+│   │   └── workers.yml             # Variables spécifiques au groupe "workers"
 │   ├── host_vars           
-│   │   ├── worker1.yml     # Configuration propre au serveur worker1
-│   │   └── worker2.yml     # Configuration propre au serveur worker2
-│   └── hosts.yml           # Fichier d'inventaire pour les différents hôtes et groupes
+│   │   ├── worker1.yml             # Configuration propre au serveur worker1
+│   │   └── worker2.yml             # Configuration propre au serveur worker2
+│   └── hosts.yml                   # Fichier d'inventaire pour les différents hôtes et groupes
 ├── playbook/               
-│   ├── cleanup.yml         # Nettoyage des fichiers temporaires
-│   ├── common.yml          # Configuration de base pour les groupes communs 
-│   ├── create_user.yml     # Création automatique et gestion des utilisateurs SSH
-│   ├── install.yml         # Playbook principal d'installation
-│   ├── ping.yml            # Test de connectivité simple
-│   └── uninstall.yml       # Désinstallation de différents paquets
-├── .gitignore              # Fichiers à exclure de Git (logs, secrets)
-├── ansible.cfg             # Configuration personnalisée d'Ansible
-└── README.md               # Documentation du projet
+│   ├── cleanup.yml                 # Nettoyage des fichiers temporaires
+│   ├── common.yml                  # Configuration de base pour les groupes communs 
+│   ├── create_user.yml             # Création automatique et gestion des utilisateurs SSH
+│   ├── install.yml                 # Playbook principal d'installation
+|   ├──    node_exporter_install.yml   # Fichier de configuration pour prometheus-node-exporter
+│   ├── ping.yml                    # Test de connectivité simple
+│   └── uninstall.yml               # Désinstallation de différents paquets
+├── .gitignore                      # Fichiers à exclure de Git (logs, secrets)
+├── ansible.cfg                     # Configuration personnalisée d'Ansible
+└── README.md                       # Documentation du projet
 
 ```
 
