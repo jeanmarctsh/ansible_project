@@ -1,70 +1,94 @@
-# 🚀 Ansible Automation 
-# Projet en cours de restructuration pour une approche plus manageable
-> En raison de cette restructuration, **les anciennes commandes ciblant un fichier d'inventaire direct ne doivent plus être utilisées**
+
+<h1 align="center"> Infrastructure Management and Monitoring with Ansible, Prometheus, and Grafana. </h1>
+
+# Project in progress
+> Previous Ansible playbooks are no longer included in this version due to updates in the `ansible.cfg` configuration and project structure.
 
 ---
 
-## 🎯 Objectif
+##  Output
 
-Ce projet vise à automatiser la gestion d'une infrastructure Linux avec Ansible, notamment :
+    - Install ansible on the manager node
+    - set up manager and worker nodes
+    - Deploy Prometheus and Grafana using docker compose on the Manager
+    - Install and configure prometheus-node-exporter on Manager and worker nodes using ansible
+    - Define infrastructure sizing and network configuration
 
-    - Création d'un utilisateur ansible (rua) dédié pour une gestion centralisée et sécurisée,
-    - Organiser la configuration avec group_vars et host_vars pour une meilleure scalabilité
-    - Installation et gestion de différents paquets via le module apt,
-    - Simplifier la configuration des serveurs et réduire les interventions manuelles
-    - etc...
+## Expected outcome
+
+    - Collect metrics on Manager and worker nodes
+    - Automate infrastructure management to reduce manual tasks
+    - Retreive Manager and worker nodes data to avoid downtime issues
 
 ---
 
-## 📁 Structure du projet
+## Use Case
 
-la structure générale du projet se présente de la manière suivante:
+    This project demonstrates how to automate infrastructure management and monitoring in a small production-like environment using Ansible, Prometheus, and Grafana.
+
+    It can be used by system administrators or DevOps engineers to:
+    - Monitor multiple servers in real time
+    - Automate deployment and configuration tasks
+    - Improve infrastructure reliability and visibility
+---
+
+## Architecture
+
+    - 1 Manager node (Ansible + Prometheus + Grafana)
+    - 2 Worker nodes (Node Exporter installed)
+    - Communication via SSH
+    - Metrics collected via HTTP endpoints
+---
+
+## Project structure
+
 
 ```text
 ansible-automation/
-├── Images                          # Captures d'écran et schémas du projet
+├── Images/                         # Screenshots and project diagrams
 ├── inventory/              
-│   ├── group_vars
-│   │   ├── all.yml                 # Variables communes à tous les serveurs
-│   │   └── workers.yml             # Variables spécifiques au groupe "workers"
-│   ├── host_vars           
-│   │   ├── worker1.yml             # Configuration propre au serveur worker1
-│   │   └── worker2.yml             # Configuration propre au serveur worker2
-│   └── hosts.yml                   # Fichier d'inventaire pour les différents hôtes et groupes
+│   ├── group_vars/
+│   │   ├── all.yml                 # Common variables for all Servers
+│   │   └── workers.yml             # Workers group variables
+│   ├── host_vars/           
+│   │   ├── worker1.yml             # Worker1-specific configuration
+│   │   └── worker2.yml             # Worker2-specific configuration
+|   ├── staging/
+|   └── └── hosts.yml               # Inventory file for staging environment
+├── monitoring/
+|   ├── .env.example                # Grafana credentials example configuration
+|   ├── .gitignore                  # .gitignore rules in monitoring directory
+|   ├── docker-compose.yml          # docker-compose.yml configuration (Prometheus & Grafana services)
+|   ├── prometheus.yml              # This file controls how Prometheus monitors your infrastructure
 ├── playbook/               
-│   ├── cleanup.yml                 # Nettoyage des fichiers temporaires
-│   ├── common.yml                  # Configuration de base pour les groupes communs 
-│   ├── create_user.yml             # Création automatique et gestion des utilisateurs SSH
-│   ├── install.yml                 # Playbook principal d'installation
-|   ├──    node_exporter_install.yml   # Fichier de configuration pour prometheus-node-exporter
-│   ├── ping.yml                    # Test de connectivité simple
+│   ├── cleanup.yml                 # Playbook file for cleaning
+│   ├── common.yml                  # Base configuration shared across all groups
+│   ├── create_user.yml             # Automates SSH user creation and management
+│   ├── install.yml                 # Primary installation playbook
+|   ├── node_exporter_install.yml   # Installs and configures Prometheus Node Exporter
+│   ├── ping.yml                    # Simple connectivity test
 │   └── uninstall.yml               # Désinstallation de différents paquets
-├── .gitignore                      # Fichiers à exclure de Git (logs, secrets)
-├── ansible.cfg                     # Configuration personnalisée d'Ansible
-└── README.md                       # Documentation du projet
+├── .gitignore                      # Defines files and directories excluded from version control
+├── ansible.cfg                     # Custom Ansible settings and defaults
+└── README.md                       # Project description
 
 ```
-
-
-
-
-
 ---
 
-## 🛠️ technologies utilisées
+## 🛠️ tools used
 
-    - Linux (Ubuntu)
-    - Ansible
-    - Git
-    - SSH
-    - YAML
+    - Linux as operating system (Ubuntu LTS 22.04)
+    - Ansible for automation
+    - Git for versioning
+    - SSH for remote connection
+    - YAML language for file cpnfiguration
+    - Prometheus to collect metrics on manager and worker nodes
+    - Grafana for data vizualisation
 
 ---
-## ▶️ Exécution du Playbook (ancienne configuration).
+## ▶️ Playbook execution (old configuration).
 
-Pour l'exécution d'un Playbook, voici quelques commandes à lancer:
-
-> 1. Test de connectivité sur les deux serveurs (worker1 et worker2)
+> 1. Connectivity test on worker nodes (worker1 et worker2)
 
 ```bash
 ansible all -i inventory/hosts.yml -m ping
@@ -72,7 +96,7 @@ ansible all -i inventory/hosts.yml -m ping
 ```
 ---
 
-> 2. Installation de difféents paquets au niveau du worker1 avec le tag : install_A
+> 2. Install Packages on worker1 with install_A as tag
 
 ```bash
 ansible-playbook -i inventory/hosts.yml playbook/install.yml --tags="install_A"
@@ -81,24 +105,42 @@ ansible-playbook -i inventory/hosts.yml playbook/install.yml --tags="install_A"
 
 ---
 
-> 3. Installation de difféents paquets au niveau du worker2 avec le tag : install_B
+> 3. Install Packages on worker2 with install_B as tag
 
 ```bash
 ansible-playbook -i inventory/hosts.yml playbook/common.yml --tags="install_B"
 
 ```
 
-> Exécution du Playbook ( Nouvelle configuration)
+> Playbook execution ( New configuration)
 
-    Suite à la restructuration du repertoire inventory et du fichier ansible.cfg, l'exécution de la nouvelle commande sera:
+As mentionned in the begining, inventory directory and ansible.cfg file has been update, the execution 
 
 ```bash
 ansible-playbook playbook/node_exporter_install.yml
 
 ```
-	
+## Monitoring overview
+
+### Grafana Dashboard
+
+Visualization of system metrics collected from manager and worker nodes.
+
+![Grafana](Images/grafana_worker_nodes_info.PNG)
+
+### Prometheus targets
+
+List of monitored nodes and services with their current status.
+
+![Prometheus](Images/prom.PNG)
 
 ---
+
+## Future Improvements
+
+- Add alerting with Alertmanager
+- Integrate CI/CD pipeline
+- etc ...
 
 ## 📫 CONTACT
 
