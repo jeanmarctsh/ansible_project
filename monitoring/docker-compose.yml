@@ -14,6 +14,9 @@ services:
     
     restart: unless-stopped
 
+    depends_on:
+      - cadvisor 
+
  # 2. installation of Grafana
   
   grafana: 
