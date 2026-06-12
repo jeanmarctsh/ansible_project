@@ -33,3 +33,7 @@ scrape_configs:
           environment: "staging"
           role: "worker"
           os: "linux"
+
+  - job_name: 'docker-containers'
+    static_configs:
+      - targets: ['cadvisor:8080']
