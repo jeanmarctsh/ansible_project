@@ -17,7 +17,7 @@ services:
  # 2. installation of Grafana
   
   grafana: 
-    image: grafana/grafana:12.3.5
+    image: grafana/grafana:13
     container_name: grafana
     ports:
       - "3000:3000"
@@ -29,8 +29,25 @@ services:
     restart: unless-stopped
     volumes:
       - grafana-data:/var/lib/grafana
+  
+  # 3. installation de Cadvisor pour le monitoring de différents conteneurs docker
+
+  cadvisor:
+    image: ghcr.io/google/cadvisor:v0.56.2
+    container_name: cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    restart: unless-stopped
 
 
 volumes:
-  prometheus-data:
-  grafana-data:
+  prometheus-data: {}
+  grafana-data: {}
