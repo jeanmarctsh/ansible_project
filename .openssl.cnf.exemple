@@ -1,0 +1,25 @@
+## file in progress : defining kay and values to generate a self-signed certificate Using  Openssl
+
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+
+[req_distinguished_name]
+C = CD
+ST = Kinshasa
+L = Kinshasa
+O = Mon Entreprise Lab
+OU = IT Developpement
+CN = à completer
+
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment, digitalSignature
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = à completer
+DNS.2 = à completer
+DNS.3 = à completer
+IP.1 = à completer
