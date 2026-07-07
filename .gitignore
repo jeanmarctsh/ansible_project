@@ -7,6 +7,6 @@ ansible_key*
 ssh_config
 known_hosts
 
-# Ignorer tout dossier .ssh qui serait créé par erreur dans le projet
+# Ignorer tout dossier .ssh qui serait créé par erreur dans le projet et fichier .env
 .ssh/
-
+.env*
