@@ -1,7 +1,7 @@
 services:
   # 1 installation of Prometheus
   prometheus:
-    image: prom/prometheus:v3.10.0
+    image: prom/prometheus:v3.12
     container_name: prometheus
     ports:
       - "9090:9090"
@@ -11,7 +11,7 @@ services:
       - prometheus-data:/prometheus
     
     command: 
-      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--config.file=/etc/prometheus/prometheus.yml" ## telling prom where is the file conf location
     
     restart: unless-stopped
 
@@ -24,6 +24,10 @@ services:
 
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.local.com`)"
+      - "traefik.http.routers.prometheus.entrypoints=websecure"
+      - "traefik.http.routers.prometheus.tls=true"
+      - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
 
   # 2. installation of Grafana
   
@@ -46,6 +50,12 @@ services:
 
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.local.com`)"
+      - "traefik.http.routers.grafana.entrypoints=websecure"
+      - "traefik.http.routers.grafana.tls=true"
+      - "traefik.http.services.grafana.loadbalancer.server.port=3000"
+
+      
   
   # 3. installation de Cadvisor pour le monitoring de différents conteneurs docker (cpu, ram, etc...)
 
@@ -69,15 +79,19 @@ services:
     
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.cadvisor.rule=Host(`cadvisor.local.fr`)"
+      - "traefik.http.routers.cadvisor.entrypoints=websecure"
+      - "traefik.http.routers.cadvisor.tls=true"
+      - "traefik.http.services.cadvisor.loadbalancer.server.port=8080"
 
-  # 4. Installation de Treafik comme reverse proxy
+  # 4. Installation de Treafik comme reverse proxy en cours...
   
   traefik:
     image: traefik:v3.7.5
     container_name: traefik
     restart: unless-stopped
     security_opt:
-      - no-new-privileges:true
+      - no-new-privileges:true ## best priv management, best way of security
     networks:
       - web_proxy
     ports:
@@ -103,17 +117,20 @@ services:
       # all about provider
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=proxy"
+      - "--providers.docker.network=web_proxy"
 
      # Enable self‑routing
     labels:
       - "traefik.enable=true"
 
       # Dashboard router
-      - "traefik.http.routers.dashboard.rule=Host(`dashboard.docker.localhost`)" ## à revoir lors de la partie DNS
+      - "traefik.http.routers.dashboard.rule=Host(`dashboard.docker.localhost`)" ##               
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.service=api@internal"
       - "traefik.http.routers.dashboard.tls=true"
+      
+      #  Auth security
+     
 
       
 
