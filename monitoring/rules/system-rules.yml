@@ -1,0 +1,6 @@
+## set up system_rules for host
+
+groups:
+  - name: cpu-nodes info
+    rules: 
+    - record: fetch cpu 
